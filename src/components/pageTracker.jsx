@@ -5,7 +5,7 @@ export default class PageTracker extends Component {
     super(props);
     console.log(props, 'pageTracker')
     this.state = {
-      questionId: props.index
+      questionId: props.page
     }
     this.previousQuestion = this.previousQuestion.bind(this);
     this.nextQuestion = this.nextQuestion.bind(this);
@@ -14,20 +14,20 @@ export default class PageTracker extends Component {
     if (this.state.questionId === 9) {
       this.redirectToSummary();
     }
-    this.setState({ questionId: this.props.index++ })
+    this.setState({ questionId: this.props.page++ })
   }
 
   previousQuestion() {
     if (this.state.questionId === 0) {
       return null;
     }
-    this.setState({ questionId: this.props.index-- })
+    this.setState({ questionId: this.props.page-- })
   }
 
   redirectToSummary() {
     this.props.history.push('/gameOver');
   }
-  
+
   render() {
     return (
       <nav>

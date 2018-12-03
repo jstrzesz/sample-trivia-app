@@ -11,15 +11,27 @@ export default class QuestionCard extends Component {
       questionId: props.index,
       currentCategory: props.question.category,
       currentQuestion: props.question.question,
-      correctAnswer: props.question.correct_answer
+      correctAnswer: props.question.correct_answer,
+      selectedAnswer: ''
     }
     this.nextQuestion = this.nextQuestion.bind(this);
+    this.setAnswerTrue = this.setAnswerTrue.bind(this);
+    this.setAnswerFalse = this.setAnswerFalse.bind(this);
   }
 
   nextQuestion() {
     this.setState({ questionId: this.props.index++ })
   }
 
+  setAnswerTrue(e) {
+    e.preventDefault();
+    this.setState({ selectedAnswer: 'True' }, () => {})
+  }
+
+  setAnswerFalse(e) {
+    e.preventDefault();
+    this.setState({ selectedAnswer: 'False' }, () => {})
+  }
   render() {
     return (
       <div>
@@ -33,8 +45,8 @@ export default class QuestionCard extends Component {
             <p className="card-text">{this.state.currentQuestion}</p>
           </div>
           <div className="card-footer">
-            <button className="button-true btn-block">True</button>
-            <button className="button-false btn-block">False</button>
+            <button className="button-true btn-block" name="true" onClick={e => this.setAnswerTrue(e)}>True</button>
+            <button className="button-false btn-block" name="false" onClick={e => this.setAnswerFalse(e)}>False</button>
           </div>
         </div>
         <br />
