@@ -47,7 +47,7 @@ export default class Home extends Component {
   }
 
   redirectToGamePage() {
-    this.props.history.push('/gamePage');
+    this.props.history.push('/gamePage', { questions: this.state.questions });
   }
 
   render() {
