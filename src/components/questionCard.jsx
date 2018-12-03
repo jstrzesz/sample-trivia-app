@@ -1,15 +1,25 @@
 import React, { Component } from 'react';
 import './questionCard.css';
 import PageTracker from './pageTracker.jsx';
+import Summary from './summary.jsx';
 
 export default class QuestionCard extends Component {
   constructor(props) {
     super(props);
-    console.log(props);
+    // console.log(props);
     this.state = {
-
+      questionId: props.index,
+      currentCategory: props.question.category,
+      currentQuestion: props.question.question,
+      correctAnswer: props.question.correct_answer
     }
+    this.nextQuestion = this.nextQuestion.bind(this);
   }
+
+  nextQuestion() {
+    this.setState({ questionId: this.props.index++ })
+  }
+
   render() {
     return (
       <div>
@@ -18,9 +28,9 @@ export default class QuestionCard extends Component {
         </div >
         <br />
         <div className="card bg-default">
-          <h5 className="card-header">{this.props.question.category}</h5>
+          <h5 className="card-header">{this.state.currentCategory}</h5>
           <div className="card-body">
-            <p className="card-text">{this.props.question.question}</p>
+            <p className="card-text">{this.state.currentQuestion}</p>
           </div>
           <div className="card-footer">
             <button className="button-true btn-block">True</button>
@@ -31,7 +41,7 @@ export default class QuestionCard extends Component {
         <div className="row">
           <div className="col-md-3"></div>
           <div className="col-md-6">
-            <PageTracker page={this.props.index + 1}/>
+            <PageTracker page={this.props.index}/>
           </div>
           <div className="col-md-3"></div>
         </div>
