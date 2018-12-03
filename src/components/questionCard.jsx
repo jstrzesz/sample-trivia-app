@@ -12,15 +12,18 @@ export default class QuestionCard extends Component {
       currentCategory: props.question.category,
       currentQuestion: props.question.question,
       correctAnswer: props.question.correct_answer,
-      selectedAnswer: ''
+      selectedAnswer: '',
+      score: 0
     }
     this.nextQuestion = this.nextQuestion.bind(this);
     this.setAnswerTrue = this.setAnswerTrue.bind(this);
     this.setAnswerFalse = this.setAnswerFalse.bind(this);
+    this.updateScore = this.updateScore.bind(this);
   }
 
   nextQuestion() {
-    this.setState({ questionId: this.props.index++ })
+    // this.setState({ questionId: this.props.index++ })
+    this.updateScore();
   }
 
   setAnswerTrue(e) {
@@ -32,6 +35,13 @@ export default class QuestionCard extends Component {
     e.preventDefault();
     this.setState({ selectedAnswer: 'False' }, () => {})
   }
+
+  updateScore() {
+    if (this.state.selectedAnswer === this.state.correctAnswer) {
+      this.setState({ score: this.state.score + 1 }, () => {})
+    }
+  }
+
   render() {
     return (
       <div>
@@ -53,7 +63,17 @@ export default class QuestionCard extends Component {
         <div className="row">
           <div className="col-md-3"></div>
           <div className="col-md-6">
-            <PageTracker page={this.props.index}/>
+            <nav>
+              <ul className="pagination">
+                <li className="page-item">
+                  <a className="page-link" href="#">Previous</a>
+                </li>
+                <li className="page-item">
+                  <a className="page-link" href="#" onClick={this.nextQuestion}>Next</a>
+                </li>
+              </ul>
+            </nav> 
+            {/* <PageTracker page={this.props.index}/> */}
           </div>
           <div className="col-md-3"></div>
         </div>
