@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import './questionCard.css';
+import PageTracker from './pageTracker.jsx';
 
 export default class QuestionCard extends Component {
   constructor(props) {
@@ -21,9 +23,17 @@ export default class QuestionCard extends Component {
             <p className="card-text">{this.props.question.question}</p>
           </div>
           <div className="card-footer">
-            <button className="button-true">True</button>
-            <button className="button-false">False</button>
+            <button className="button-true btn-block">True</button>
+            <button className="button-false btn-block">False</button>
           </div>
+        </div>
+        <br />
+        <div className="row">
+          <div className="col-md-3"></div>
+          <div className="col-md-6">
+            <PageTracker page={this.props.index + 1}/>
+          </div>
+          <div className="col-md-3"></div>
         </div>
       </div>
       // <br />
