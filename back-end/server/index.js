@@ -14,7 +14,11 @@ app.get('/south_park', (req, res) => {
 
 app.get('/trivia', (req, res) => {
   db.triviaQuestions()
-    .then(result => console.log(result, 'line 17'))
+    .then(result => {
+      const parsed = JSON.parse(result.body);
+      console.log(parsed.results, 'line 17')
+      res.send(parsed.results)
+    })
 })
 
 app.listen(port, () => {
