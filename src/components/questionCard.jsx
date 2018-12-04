@@ -4,8 +4,8 @@ import PageTracker from './pageTracker.jsx';
 import Summary from './summary.jsx';
 
 // export default class QuestionCard extends Component {
-  const QuestionCard = ({ gameQuestion }) => {
-    console.log(gameQuestion) ;
+  const QuestionCard = ({ gameQuestion , falseAnswer, trueAnswer }) => {
+    console.log(falseAnswer, trueAnswer) ;
   // constructor(props) {
   //   super(props);
   //   console.log(props);
@@ -18,7 +18,7 @@ import Summary from './summary.jsx';
   //     score: 0
   //   }
   //   this.nextQuestion = this.nextQuestion.bind(this);
-  //   this.setAnswerTrue = this.setAnswerTrue.bind(this);
+  //   this.trueAnswer = this.trueAnswer.bind(this);
   //   this.setAnswerFalse = this.setAnswerFalse.bind(this);
   //   this.updateScore = this.updateScore.bind(this);
   // }
@@ -28,24 +28,11 @@ import Summary from './summary.jsx';
   //   this.updateScore();
   // }
 
-  // setAnswerTrue(e) {
-  //   e.preventDefault();
-  //   this.setState({ selectedAnswer: 'True' }, () => {})
-  // }
 
-  // setAnswerFalse(e) {
-  //   e.preventDefault();
-  //   this.setState({ selectedAnswer: 'False' }, () => {})
-  // }
-
-  // updateScore() {
-  //   if (this.state.selectedAnswer === this.state.correctAnswer) {
-  //     this.setState({ score: this.state.score + 1 }, () => {})
-  //   }
-  // }
 
   // render() {
     const { id, question, category } = gameQuestion;
+    // const updatedScore = updateScore;
     return (
       <div>
         <div className="page-header">
@@ -58,8 +45,8 @@ import Summary from './summary.jsx';
             <p className="card-text">{question}</p>
           </div>
           <div className="card-footer">
-            <button className="button-true btn-block" name="true" onClick={e => this.setAnswerTrue(e)}>True</button>
-            <button className="button-false btn-block" name="false" onClick={e => this.setAnswerFalse(e)}>False</button>
+            <button className="button-true btn-block" name="true" onClick={trueAnswer}>True</button>
+            <button className="button-false btn-block" name="false" onClick={falseAnswer}>False</button>
           </div>
         </div>
         <br />
