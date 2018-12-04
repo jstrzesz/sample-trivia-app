@@ -61,11 +61,12 @@ export default class Home extends Component {
       <div className="container">
         <div className="row">
           <div className="col-md-12">
-            <div className="page-header">
-              <h3>Welcome to Trivia Insanity! <small>A Trivia Game</small></h3>
+            <div className="page-header text-center">
+              <h3>Welcome to Trivia Insanity!</h3>
+              <h4>A Trivia Game</h4>
             </div>
             <br />
-            <div className="card bg-default">
+            <div className="card bg-default text-center">
               <h5 className="card-header">
                 You will answer 10 insanely hard True or False questions.
               </h5>

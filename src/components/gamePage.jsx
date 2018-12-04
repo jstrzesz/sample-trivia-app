@@ -11,6 +11,7 @@ export default class GamePage extends Component {
       score: 0,
       selectedAnswer: '',
       correctAnswer: props.location.state.questions[0].correct_answer,
+      result: '',
       savedUserAnswers: []
     }
     this.goToNextQuestion = this.goToNextQuestion.bind(this);
@@ -30,6 +31,12 @@ export default class GamePage extends Component {
   }
 
   goToNextQuestion() {
+    this.state.savedUserAnswers.push({
+      userSelectedAnswer: 'True',
+      correctAnswer: this.state.correctAnswer,
+      questionId: this.state.question.id,
+      result: this.state.result
+    })
     const newIndex = this.state.question.id + 1;
     if (this.state.selectedAnswer === this.state.correctAnswer && newIndex < this.state.questions.length) {
       this.setState({ 
@@ -57,26 +64,28 @@ export default class GamePage extends Component {
   }
 
   setAnswerTrue() {
-    this.setState({ selectedAnswer: 'True' })
-    this.state.savedUserAnswers.push({
-      userSelectedAnswer: 'True',
-      correctAnswer: this.state.correctAnswer,
-      questionId: this.state.question.id
+    this.setState({ selectedAnswer: 'True' }, () => {
+      if (this.state.selectedAnswer === this.state.correctAnswer) {
+        this.setState({ result: 'Correct' })
+      } else {
+        this.setState({ result: 'Incorrect' })
+      }
     })
+    
   }
 
   setAnswerFalse() {
     this.setState({ selectedAnswer: 'False' })
-    this.state.savedUserAnswers.push({
-      userSelectedAnswer: 'False',
-      correctAnswer: this.state.correctAnswer,
-      questionId: this.state.question.id
-    })
+    if (this.state.selectedAnswer === this.state.correctAnswer) {
+      this.setState({ result: 'Correct' })
+    } else {
+      this.setState({ result: 'Incorrect' })
+    }
   }
 
   updateScore() {
     if (this.state.selectedAnswer === this.state.correctAnswer) {
-      this.setState({ score: this.state.score + 1 }, () => {})
+      this.setState({ score: this.state.score + 1 })
     }
   }
 
@@ -90,9 +99,11 @@ export default class GamePage extends Component {
           </div>
         </div>
         <div className="row">
-        <div className="col-md-12">
+          {/* <div className="col-md-4"></div> */}
+          {/* <div className="col-md-12 text-center"> */}
             <PageTracker prevQuestion={this.goToPreviousQuestion} nextQuestion={this.goToNextQuestion} />
-        </div>
+          {/* </div> */}
+          {/* <div className="col-md-4"></div> */}
         </div>
       </div>
     )
