@@ -26,13 +26,13 @@ export default class GamePage extends Component {
 
   goToPreviousQuestion() {
     const newIndex = this.state.question.id - 1;
-    this.setState({ question: this.state.questions[newIndex] }, { correctAnswer: this.state.questions[newIndex].correct_answer })
+    this.setState({ question: this.state.questions[newIndex], correctAnswer: this.state.questions[newIndex].correct_answer })
   }
 
   goToNextQuestion() {
     console.log('clicked')
     const newIndex = this.state.question.id + 1;
-    this.setState({ question: this.state.questions[newIndex] }, { correctAnswer: this.state.questions[newIndex].correct_answer })
+    this.setState({ question: this.state.questions[newIndex], correctAnswer: this.state.questions[newIndex].correct_answer })
     if (newIndex === this.state.questions.length) {
       this.redirectToSummary();
     }
@@ -43,12 +43,10 @@ export default class GamePage extends Component {
   }
 
   setAnswerTrue() {
-  // e.preventDefault();
-  this.setState({ selectedAnswer: 'True' }, () => {})
+    this.setState({ selectedAnswer: 'True' }, () => {})
   }
 
   setAnswerFalse() {
-    // e.preventDefault();
     this.setState({ selectedAnswer: 'False' }, () => {})
   }
 
@@ -60,7 +58,6 @@ export default class GamePage extends Component {
 
   render() {
     const {questions, question} = this.state;
-    console.log(this.setAnswerTrue)
     const { setAnswerTrue } = this.setAnswerTrue;
     const { setAnswerFalse } = this.setAnswerFalse;
     console.log(setAnswerFalse, setAnswerTrue)
@@ -69,9 +66,6 @@ export default class GamePage extends Component {
         <div className="row">
           <div className="col-md-12">
             <QuestionCard gameQuestion={question} falseAnswer={this.setAnswerFalse} trueAnswer={this.setAnswerTrue}/>
-            {/* {this.state.questions.map((question, index) => {
-              return (<QuestionCard key={index} question={question} index={index}/>)
-            })} */}
           </div>
         </div>
         <div className="row">
