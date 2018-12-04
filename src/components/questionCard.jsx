@@ -3,56 +3,59 @@ import './questionCard.css';
 import PageTracker from './pageTracker.jsx';
 import Summary from './summary.jsx';
 
-export default class QuestionCard extends Component {
-  constructor(props) {
-    super(props);
-    console.log(props);
-    this.state = {
-      questionId: props.index,
-      currentCategory: props.question.category,
-      currentQuestion: props.question.question,
-      correctAnswer: props.question.correct_answer,
-      selectedAnswer: '',
-      score: 0
-    }
-    this.nextQuestion = this.nextQuestion.bind(this);
-    this.setAnswerTrue = this.setAnswerTrue.bind(this);
-    this.setAnswerFalse = this.setAnswerFalse.bind(this);
-    this.updateScore = this.updateScore.bind(this);
-  }
+// export default class QuestionCard extends Component {
+  const QuestionCard = ({ gameQuestion }) => {
+    console.log(gameQuestion) ;
+  // constructor(props) {
+  //   super(props);
+  //   console.log(props);
+  //   this.state = {
+  //     questionId: props.index,
+  //     currentCategory: props.question.category,
+  //     currentQuestion: props.question.question,
+  //     correctAnswer: props.question.correct_answer,
+  //     selectedAnswer: '',
+  //     score: 0
+  //   }
+  //   this.nextQuestion = this.nextQuestion.bind(this);
+  //   this.setAnswerTrue = this.setAnswerTrue.bind(this);
+  //   this.setAnswerFalse = this.setAnswerFalse.bind(this);
+  //   this.updateScore = this.updateScore.bind(this);
+  // }
 
-  nextQuestion() {
+  // nextQuestion() {
     // this.setState({ questionId: this.props.index++ })
-    this.updateScore();
-  }
+  //   this.updateScore();
+  // }
 
-  setAnswerTrue(e) {
-    e.preventDefault();
-    this.setState({ selectedAnswer: 'True' }, () => {})
-  }
+  // setAnswerTrue(e) {
+  //   e.preventDefault();
+  //   this.setState({ selectedAnswer: 'True' }, () => {})
+  // }
 
-  setAnswerFalse(e) {
-    e.preventDefault();
-    this.setState({ selectedAnswer: 'False' }, () => {})
-  }
+  // setAnswerFalse(e) {
+  //   e.preventDefault();
+  //   this.setState({ selectedAnswer: 'False' }, () => {})
+  // }
 
-  updateScore() {
-    if (this.state.selectedAnswer === this.state.correctAnswer) {
-      this.setState({ score: this.state.score + 1 }, () => {})
-    }
-  }
+  // updateScore() {
+  //   if (this.state.selectedAnswer === this.state.correctAnswer) {
+  //     this.setState({ score: this.state.score + 1 }, () => {})
+  //   }
+  // }
 
-  render() {
+  // render() {
+    const { id, question, category } = gameQuestion;
     return (
       <div>
         <div className="page-header">
-          <h3>Question {this.props.index + 1}</h3>
+          <h3>Question {id + 1}</h3>
         </div >
         <br />
         <div className="card bg-default">
-          <h5 className="card-header">{this.state.currentCategory}</h5>
+          <h5 className="card-header">{category}</h5>
           <div className="card-body">
-            <p className="card-text">{this.state.currentQuestion}</p>
+            <p className="card-text">{question}</p>
           </div>
           <div className="card-footer">
             <button className="button-true btn-block" name="true" onClick={e => this.setAnswerTrue(e)}>True</button>
@@ -63,23 +66,12 @@ export default class QuestionCard extends Component {
         <div className="row">
           <div className="col-md-3"></div>
           <div className="col-md-6">
-            {/* <nav>
-              <ul className="pagination">
-                <li className="page-item">
-                  <a className="page-link" href="#">Previous</a>
-                </li>
-                <li className="page-item">
-                  <a className="page-link" href="#" onClick={this.nextQuestion}>Next</a>
-                </li>
-              </ul>
-            </nav>  */}
-            {/* <PageTracker page={this.props.index}/> */}
           </div>
           <div className="col-md-3"></div>
         </div>
       </div>
-      // <br />
-      // <button type="button" className="btn btn-md btn-info active btn-block" onClick={this.redirectToGamePage}>Begin</button>
     )
-  }
+  // }
 }
+
+export default QuestionCard;

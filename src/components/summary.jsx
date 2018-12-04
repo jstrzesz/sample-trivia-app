@@ -14,7 +14,7 @@ export default class Summary extends Component {
             <table className="table">
               <thead>
                 <tr>
-                  <th></th>
+                  <th>Game Over</th>
                 </tr>
               </thead>
               <tbody>

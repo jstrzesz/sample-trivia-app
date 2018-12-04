@@ -16,32 +16,48 @@ export default class GamePage extends Component {
       translateValue: 0
     }
     console.log(this.state.questions)
-    // this.goToNextQuestion = this.goToNextQuestion.bind(this);
-    // this.goToPreviousQuestion = this.goToPreviousQuestion.bind(this);
+    this.goToNextQuestion = this.goToNextQuestion.bind(this);
+    this.goToPreviousQuestion = this.goToPreviousQuestion.bind(this);
+    this.redirectToSummary = this.redirectToSummary.bind(this);
   }
 
-  
+  goToPreviousQuestion() {
+    const newIndex = this.state.question.id - 1;
+    this.setState({ question: this.state.questions[newIndex] }, () => { })
+  }
+
+  goToNextQuestion() {
+    console.log('clicked')
+    const newIndex = this.state.question.id + 1;
+    this.setState({ question: this.state.questions[newIndex] }, () => { })
+    if (newIndex === this.state.questions.length) {
+      this.redirectToSummary();
+    }
+  }
+
+  redirectToSummary() {
+    this.props.history.push('/gameOver');
+  }
 
   cardWidth() {
     return document.querySelector('.questionCard').clientWidth
   }
 
   render() {
+    const {questions, question} = this.state;
     return (
       <div className="container">
         <div className="row">
-          <div className="col-md-12" style={{
-            transform: `translateX(${this.state.translateValue}px)`,
-            transition: 'transform ease-out 0.45s'
-          }}>
-            {this.state.questions.map((question, index) => {
+          <div className="col-md-12">
+            <QuestionCard gameQuestion={question} />
+            {/* {this.state.questions.map((question, index) => {
               return (<QuestionCard key={index} question={question} index={index}/>)
-            })}
+            })} */}
           </div>
         </div>
         <div className="row">
         <div className="col-md-12">
-            <PageTracker info={this.state} />
+            <PageTracker prevQuestion={this.goToPreviousQuestion} nextQuestion={this.goToNextQuestion} />
         </div>
         </div>
       </div>
