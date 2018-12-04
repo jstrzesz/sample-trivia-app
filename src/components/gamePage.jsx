@@ -55,19 +55,19 @@ export default class GamePage extends Component {
   }
 
   redirectToSummary() {
-    this.props.history.push('/gameOver', { score: this.state.score, savedanswers: this.state.savedUserAnswers });
+    this.props.history.push('/gameOver', { score: this.state.score, savedAnswers: this.state.savedUserAnswers, questions: this.state.questions });
   }
 
   setAnswerTrue() {
     // const index = this.state.question.id;
     this.setState({ selectedAnswer: 'True' })
-    this.state.savedUserAnswers.push({ [this.state.question.id]: 'True', correctAnswer: this.state.correctAnswer})
+    this.state.savedUserAnswers.push({ userSelectedAnswer: 'True', correctAnswer: this.state.correctAnswer, questionId: this.state.question.id })
   }
 
   setAnswerFalse() {
     // const index = this.state.question.id;
     this.setState({ selectedAnswer: 'False' })
-    this.state.savedUserAnswers.push({ [this.state.question.id]: 'False', correctAnswer: this.state.correctAnswer })
+    this.state.savedUserAnswers.push({ userSelectedAnswer: 'False', correctAnswer: this.state.correctAnswer, questionId: this.state.question.id })
   }
 
   updateScore() {
