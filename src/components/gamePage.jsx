@@ -13,7 +13,8 @@ export default class GamePage extends Component {
       question: props.location.state.questions[0],
       score: 0,
       selectedAnswer: '',
-      correctAnswer: props.location.state.questions[0].correct_answer
+      correctAnswer: props.location.state.questions[0].correct_answer,
+      savedUserAnswers: []
     }
     console.log(this.state.questions)
     this.goToNextQuestion = this.goToNextQuestion.bind(this);
@@ -54,15 +55,19 @@ export default class GamePage extends Component {
   }
 
   redirectToSummary() {
-    this.props.history.push('/gameOver', { score : this.state.score });
+    this.props.history.push('/gameOver', { score: this.state.score, savedanswers: this.state.savedUserAnswers });
   }
 
   setAnswerTrue() {
+    // const index = this.state.question.id;
     this.setState({ selectedAnswer: 'True' })
+    this.state.savedUserAnswers.push({ [this.state.question.id]: 'True', correctAnswer: this.state.correctAnswer})
   }
 
   setAnswerFalse() {
+    // const index = this.state.question.id;
     this.setState({ selectedAnswer: 'False' })
+    this.state.savedUserAnswers.push({ [this.state.question.id]: 'False', correctAnswer: this.state.correctAnswer })
   }
 
   updateScore() {

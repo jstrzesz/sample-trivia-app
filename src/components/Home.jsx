@@ -9,7 +9,6 @@ export default class Home extends Component {
     this.state = {
       questions: []
     }
-    // this.serverTest = this.serverTest.bind(this);
     this.fixQuestions = this.fixQuestions.bind(this);
     this.redirectToGamePage = this.redirectToGamePage.bind(this);
   }
