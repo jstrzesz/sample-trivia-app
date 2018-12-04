@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import QuestionCard from './questionCard.jsx';
-import LeftArrow from './leftArrow.jsx';
-import RightArrow from './rightArrow.jsx';
 import PageTracker from './pageTracker.jsx';
 
 export default class GamePage extends Component {
   constructor(props) {
     super(props);
-    // console.log(props)
     this.state = {
       questions: props.location.state.questions,
       question: props.location.state.questions[0],
@@ -16,7 +13,6 @@ export default class GamePage extends Component {
       correctAnswer: props.location.state.questions[0].correct_answer,
       savedUserAnswers: []
     }
-    console.log(this.state.questions)
     this.goToNextQuestion = this.goToNextQuestion.bind(this);
     this.goToPreviousQuestion = this.goToPreviousQuestion.bind(this);
     this.redirectToSummary = this.redirectToSummary.bind(this);
@@ -34,7 +30,6 @@ export default class GamePage extends Component {
   }
 
   goToNextQuestion() {
-    console.log('clicked')
     const newIndex = this.state.question.id + 1;
     if (this.state.selectedAnswer === this.state.correctAnswer && newIndex < this.state.questions.length) {
       this.setState({ 
@@ -49,25 +44,34 @@ export default class GamePage extends Component {
       })
     }
     if (newIndex === this.state.questions.length) {
-      // this.setState({ correctAnswer: '' })
       this.redirectToSummary();
     }
   }
 
   redirectToSummary() {
-    this.props.history.push('/gameOver', { score: this.state.score, savedAnswers: this.state.savedUserAnswers, questions: this.state.questions });
+    this.props.history.push('/gameOver', {
+      score: this.state.score,
+      savedAnswers: this.state.savedUserAnswers,
+      questions: this.state.questions
+    });
   }
 
   setAnswerTrue() {
-    // const index = this.state.question.id;
     this.setState({ selectedAnswer: 'True' })
-    this.state.savedUserAnswers.push({ userSelectedAnswer: 'True', correctAnswer: this.state.correctAnswer, questionId: this.state.question.id })
+    this.state.savedUserAnswers.push({
+      userSelectedAnswer: 'True',
+      correctAnswer: this.state.correctAnswer,
+      questionId: this.state.question.id
+    })
   }
 
   setAnswerFalse() {
-    // const index = this.state.question.id;
     this.setState({ selectedAnswer: 'False' })
-    this.state.savedUserAnswers.push({ userSelectedAnswer: 'False', correctAnswer: this.state.correctAnswer, questionId: this.state.question.id })
+    this.state.savedUserAnswers.push({
+      userSelectedAnswer: 'False',
+      correctAnswer: this.state.correctAnswer,
+      questionId: this.state.question.id
+    })
   }
 
   updateScore() {
@@ -77,7 +81,7 @@ export default class GamePage extends Component {
   }
 
   render() {
-    const {questions, question} = this.state;
+    const {question} = this.state;
     return (
       <div className="container">
         <div className="row">
