@@ -5,7 +5,7 @@ import Summary from './summary.jsx';
 
 // export default class QuestionCard extends Component {
   const QuestionCard = ({ gameQuestion , falseAnswer, trueAnswer }) => {
-    console.log(falseAnswer, trueAnswer) ;
+    // console.log(falseAnswer, trueAnswer) ;
   // constructor(props) {
   //   super(props);
   //   console.log(props);

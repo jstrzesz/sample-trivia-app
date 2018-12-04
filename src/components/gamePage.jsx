@@ -26,28 +26,43 @@ export default class GamePage extends Component {
 
   goToPreviousQuestion() {
     const newIndex = this.state.question.id - 1;
-    this.setState({ question: this.state.questions[newIndex], correctAnswer: this.state.questions[newIndex].correct_answer })
+    this.setState({
+      question: this.state.questions[newIndex],
+      correctAnswer: this.state.questions[newIndex].correct_answer
+    })
   }
 
   goToNextQuestion() {
     console.log('clicked')
     const newIndex = this.state.question.id + 1;
-    this.setState({ question: this.state.questions[newIndex], correctAnswer: this.state.questions[newIndex].correct_answer })
+    if (this.state.selectedAnswer === this.state.correctAnswer && newIndex < this.state.questions.length) {
+      this.setState({ 
+        score: this.state.score + 1,
+        question: this.state.questions[newIndex],
+        correctAnswer: this.state.questions[newIndex].correct_answer
+      })
+    } else if (this.state.selectedAnswer !== this.state.correctAnswer && newIndex < this.state.questions.length) {
+      this.setState({
+        question: this.state.questions[newIndex],
+        correctAnswer: this.state.questions[newIndex].correct_answer
+      })
+    }
     if (newIndex === this.state.questions.length) {
+      // this.setState({ correctAnswer: '' })
       this.redirectToSummary();
     }
   }
 
   redirectToSummary() {
-    this.props.history.push('/gameOver');
+    this.props.history.push('/gameOver', { score : this.state.score });
   }
 
   setAnswerTrue() {
-    this.setState({ selectedAnswer: 'True' }, () => {})
+    this.setState({ selectedAnswer: 'True' })
   }
 
   setAnswerFalse() {
-    this.setState({ selectedAnswer: 'False' }, () => {})
+    this.setState({ selectedAnswer: 'False' })
   }
 
   updateScore() {
@@ -58,9 +73,6 @@ export default class GamePage extends Component {
 
   render() {
     const {questions, question} = this.state;
-    const { setAnswerTrue } = this.setAnswerTrue;
-    const { setAnswerFalse } = this.setAnswerFalse;
-    console.log(setAnswerFalse, setAnswerTrue)
     return (
       <div className="container">
         <div className="row">

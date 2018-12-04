@@ -3,8 +3,7 @@ import React, { Component } from 'react';
 export default class Summary extends Component {
   constructor(props) {
     super(props);
-    // console.log(props);
-    this.state = {}
+    console.log(props);
   }
   render() {
     return (
@@ -14,12 +13,12 @@ export default class Summary extends Component {
             <table className="table">
               <thead>
                 <tr>
-                  <th>Game Over</th>
+                  <th>Score</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td></td>
+                  <td>{this.props.location.state.score} / 10</td>
                 </tr>
               </tbody>
             </table>

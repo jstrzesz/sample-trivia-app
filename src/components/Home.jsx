@@ -39,6 +39,7 @@ export default class Home extends Component {
       question.question = question.question.replace(/&rdquo;/g, ':');
       question.question = question.question.replace(/&epsilon;/g, 'Ɛ');
       question.question = question.question.replace(/&Phi;/g, 'ϕ');
+      question.question = question.question.replace(/&ocirc;/g, 'ô');
       question.correct_answer = question.correct_answer.replace(/&quot;/g, '"');
       question.correct_answer = question.correct_answer.replace(/`/g, '"');
       question.correct_answer = question.correct_answer.replace(/&#039;/g, '\'');
@@ -46,6 +47,7 @@ export default class Home extends Component {
       question.correct_answer = question.correct_answer.replace(/&eacute;/g, 'é');
       question.correct_answer = question.correct_answer.replace(/&epsilon;/g, 'Ɛ');
       question.correct_answer = question.correct_answer.replace(/&Phi;/g, 'ϕ');
+      question.correct_answer = question.correct_answer.replace(/&ocirc;/g, 'ô');
       newArr.push(question);
     })
     return newArr;
