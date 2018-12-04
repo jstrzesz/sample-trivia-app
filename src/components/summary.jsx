@@ -50,6 +50,7 @@ export default class Summary extends Component {
                   question={question.question}
                   correctAnswer={question.correct_answer}
                   userAnswer={question.userAnswer}
+                  result={question.result}
                 />)
               })}
             </div>

@@ -2,6 +2,13 @@ import React, { Component } from 'react';
 
 export default class QuestionList extends Component {
 
+  checkAnswer() {
+    if (this.props.result === 'Correct') {
+      return <div className="card-footer" style={{background: 'green'}}>Correct</div>
+    } else {
+      return <div className="card-footer" style={{background: 'red'}}>Incorrct</div>
+    }
+  }
   render() {
     return (
       <div className="container">
@@ -13,7 +20,7 @@ export default class QuestionList extends Component {
                 <p className="card-text">{this.props.userAnswer}</p>
                 <p className="card-text">{this.props.correctAnswer}</p>
               </div>
-              <div className="card-footer"></div>
+              <div className="card-footer" ></div>
             </div>
           </div>
         </div>       
