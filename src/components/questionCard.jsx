@@ -6,7 +6,7 @@ import Summary from './summary.jsx';
 export default class QuestionCard extends Component {
   constructor(props) {
     super(props);
-    // console.log(props);
+    console.log(props);
     this.state = {
       questionId: props.index,
       currentCategory: props.question.category,
@@ -63,7 +63,7 @@ export default class QuestionCard extends Component {
         <div className="row">
           <div className="col-md-3"></div>
           <div className="col-md-6">
-            <nav>
+            {/* <nav>
               <ul className="pagination">
                 <li className="page-item">
                   <a className="page-link" href="#">Previous</a>
@@ -72,7 +72,7 @@ export default class QuestionCard extends Component {
                   <a className="page-link" href="#" onClick={this.nextQuestion}>Next</a>
                 </li>
               </ul>
-            </nav> 
+            </nav>  */}
             {/* <PageTracker page={this.props.index}/> */}
           </div>
           <div className="col-md-3"></div>

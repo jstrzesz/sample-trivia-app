@@ -26,7 +26,8 @@ export default class Home extends Component {
 
   fixQuestions(array) {
     const newArr = [];
-    array.forEach(question => {
+    array.forEach((question, index) => {
+      question.id = index;
       question.question = question.question.replace(/&quot;/g, '"');
       question.question = question.question.replace(/`/g, '"');
       question.question = question.question.replace(/&#039;/g, '\'');

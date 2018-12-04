@@ -5,23 +5,22 @@ export default class PageTracker extends Component {
     super(props);
     console.log(props, 'pageTracker')
     this.state = {
-      questionId: props.page
+      questions: props.info.questions,
+      question: props.info.questions[0]
     }
-    this.previousQuestion = this.previousQuestion.bind(this);
-    this.nextQuestion = this.nextQuestion.bind(this);
+    console.log(this.state, 'line 11')
+    this.goToPreviousQuestion = this.goToPreviousQuestion.bind(this);
+    this.goToNextQuestion = this.goToNextQuestion.bind(this);
   }
-  nextQuestion() {
-    if (this.state.questionId === 9) {
-      this.redirectToSummary();
-    }
-    this.setState({ questionId: this.props.page++ })
+  goToPreviousQuestion() {
+    const newIndex = this.state.question.id - 1;
+    this.setState({ question: this.state.questions[newIndex] }, () => {})
   }
 
-  previousQuestion() {
-    if (this.state.questionId === 0) {
-      return null;
-    }
-    this.setState({ questionId: this.props.page-- })
+  goToNextQuestion() {
+    console.log('clicked')
+    const newIndex = this.state.question.id + 1;
+    this.setState({ question: this.state.questions[newIndex] }, () => {})
   }
 
   redirectToSummary() {
@@ -33,10 +32,16 @@ export default class PageTracker extends Component {
       <nav>
 				<ul className="pagination">
 					<li className="page-item">
-						<a className="page-link" href="#">Previous</a>
+            <button  className="page-link" 
+                href="#" 
+                onClick={this.goToPreviousQuestion} 
+                disabled={this.state.question.id === 0}>Previous</button>
 					</li>
 					<li className="page-item">
-						<a className="page-link" href="#" onClick={this.nextQuestion}>Next</a>
+            <button  className="page-link" 
+                href="#" 
+                onClick={this.goToNextQuestion} 
+                disabled={this.state.question.id === this.state.questions.length - 1}>Next</button>
 					</li>
 				</ul>
 			</nav> 
