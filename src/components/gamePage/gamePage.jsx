@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import QuestionCard from './questionCard.jsx';
-import PageTracker from './pageTracker.jsx';
+import QuestionCard from '../questionCard/questionCard.jsx';
+import PageTracker from '../pageTracker/pageTracker.jsx';
 
 //base component for Game Page
 export default class GamePage extends Component {

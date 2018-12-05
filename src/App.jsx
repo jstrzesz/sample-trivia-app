@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
-import Home from '../src/components/Home.jsx';
-import GamePage from'./components/gamePage.jsx';
-import Summary from './components/summary.jsx';
+import Home from './components/home/Home.jsx';
+import GamePage from'./components/gamePage/gamePage.jsx';
+import Summary from './components/summary/summary.jsx';
 
 //base Component for App, also the router
 export default class App extends Component {

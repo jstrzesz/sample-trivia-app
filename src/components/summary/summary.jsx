@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import QuestionList from './questionList.jsx';
+import QuestionList from '../questionList/questionList.jsx';
 import './summary.css';
 
 export default class Summary extends Component {
