@@ -1,0 +1,9 @@
+.button-true {
+  background-color: lightgreen;
+  border-radius: 5px 5px;
+}
+
+.button-false {
+  background-color: #DC143C;
+  border-radius: 5px 5px;
+}
