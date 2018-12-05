@@ -24,7 +24,16 @@ export default class GamePage extends Component {
 
   goToPreviousQuestion() {
     const newIndex = this.state.question.id - 1;
+    if (this.state.score > 0) {
+      this.setState({
+        score: this.state.score - 1,
+        result: '',
+        question: this.state.questions[newIndex],
+        correctAnswer: this.state.questions[newIndex].correct_answer
+      })
+    }
     this.setState({
+      result: '',
       question: this.state.questions[newIndex],
       correctAnswer: this.state.questions[newIndex].correct_answer
     })
@@ -32,7 +41,7 @@ export default class GamePage extends Component {
 
   goToNextQuestion() {
     this.state.savedUserAnswers.push({
-      userSelectedAnswer: 'True',
+      userSelectedAnswer: this.state.selectedAnswer,
       correctAnswer: this.state.correctAnswer,
       questionId: this.state.question.id,
       result: this.state.result
@@ -104,7 +113,7 @@ export default class GamePage extends Component {
           </div>
         </div>
         <div className="row">
-            <PageTracker prevQuestion={this.goToPreviousQuestion} nextQuestion={this.goToNextQuestion} />
+            <PageTracker prevQuestion={this.goToPreviousQuestion} nextQuestion={this.goToNextQuestion} index={this.state.question.id}/>
         </div>
         <br />
         <br />

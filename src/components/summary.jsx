@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import QuestionList from './questionList.jsx';
+import './summary.css';
 
 export default class Summary extends Component {
   constructor(props) {
@@ -41,30 +42,30 @@ export default class Summary extends Component {
 
   render() {
     return ( 
-      <div>
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12 text-center">
-              <h2>Game Over</h2>
-              <h3>Score: {this.props.location.state.score} / 10</h3>
-              {this.state.gameData.map(question => {
-                return (<QuestionList key={question.id}
-                  questionNumber={question.id + 1}
-                  question={question.question}
-                  correctAnswer={question.correct_answer}
-                  userAnswer={question.userAnswer}
-                  result={question.result}
-                />)
-              })}
-            </div>
+      <div className="container">
+        <div className="row">
+          <div className="col-md-12 text-center">
+            <h2>Game Over</h2>
+            <h3>Score: {this.props.location.state.score} / 10</h3>
+            {this.state.gameData.map(question => {
+              return (<QuestionList key={question.id}
+                questionNumber={question.id + 1}
+                question={question.question}
+                correctAnswer={question.correct_answer}
+                userAnswer={question.userAnswer}
+                result={question.result}
+              />)
+            })}
           </div>
-          <div className="row">
-            <div className="col-md-12">
-              <button className="btn btn-block" onClick={this.redirectToGameStart}>Play Again?</button>
-            </div>
+        </div>
+        <br />
+        <div className="row">
+          <div className="col-md-12">
+            <button type="button" className="btn btn-block" onClick={this.redirectToGameStart}>Play Again?</button>
           </div>
-        </div>    
-      </div>
+        </div>
+        <br />  
+      </div>  
     )
   }
 }
