@@ -1,23 +1,13 @@
 import React, { Component } from 'react';
+import './questionList.css';
 
 export default class QuestionList extends Component {
-  constructor(props) {
-    super(props);
-    console.log(props)
-    this.state = {}
-    this.checkAnswer = this.checkAnswer.bind(this);
-  }
-
-  checkAnswer() {
-    if (this.props.result === 'Correct') {
-       console.log(this.props.result, 'line 11')
-      return <div className="card-footer" style={{background: 'green'}}>Correct</div>
-    } else {
-      return <div className="card-footer" style={{background: 'red'}}>Incorrct</div>
-    }
-  }
 
   render() {
+    let resultStyle = { background: 'lightgreen' };
+      if (this.props.result === 'Incorrect') {
+        resultStyle = { background: '#DC143C' }
+      }
     return (
       <div className="container">
         <div className="row">
@@ -28,7 +18,7 @@ export default class QuestionList extends Component {
                 <p className="card-text">Your Answer: {this.props.userAnswer}</p>
                 <p className="card-text">Correct Answer: {this.props.correctAnswer}</p>
               </div>
-              <div className="card-footer">{this.props.result}</div>
+              <div className="card-footer" style={resultStyle} >{this.props.result}</div>
             </div>
           </div>
         </div>       

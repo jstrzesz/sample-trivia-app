@@ -1,0 +1,15 @@
+/* .card-footer {
+  background-color: lightgreen
+} */
+
+.correct {
+  background-color: lightgreen
+}
+
+[data-status="true"] {
+    color: green;
+}
+
+[data-status="false"] {
+  color: red;
+}

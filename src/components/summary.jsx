@@ -23,8 +23,10 @@ export default class Summary extends Component {
     let combined = [];
     this.state.gameQuestions.forEach(question => {
       for (let i = 0; i < this.state.gameInfo.length; i++) {
-        question.userAnswer = this.state.gameInfo[i].userSelectedAnswer;
-        question.result = this.state.gameInfo[i].result;
+        if (question.id === this.state.gameInfo[i].questionId) {
+          question.userAnswer = this.state.gameInfo[i].userSelectedAnswer;
+          question.result = this.state.gameInfo[i].result;
+        }
         if (!combined.includes(question)) {
           combined.push(question);
         }
@@ -46,7 +48,6 @@ export default class Summary extends Component {
               <h2>Game Over</h2>
               <h3>Score: {this.props.location.state.score} / 10</h3>
               {this.state.gameData.map(question => {
-                console.log(question)
                 return (<QuestionList key={question.id}
                   questionNumber={question.id + 1}
                   question={question.question}

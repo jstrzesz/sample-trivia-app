@@ -31,12 +31,23 @@ export default class GamePage extends Component {
   }
 
   goToNextQuestion() {
+    // let questionsWithResults = [];
     this.state.savedUserAnswers.push({
       userSelectedAnswer: 'True',
       correctAnswer: this.state.correctAnswer,
       questionId: this.state.question.id,
       result: this.state.result
     })
+    // this.state.questions.forEach(question => {
+    //   console.log(question.id, this.state.question.id)
+    //   if (question.id === this.state.question.id) {
+    //     question.result = this.state.result;
+    //     console.log(question.result, 'hello')
+    //   }
+    //   questionsWithResults.push(question);
+    // })
+    // console.log(questionsWithResults)
+    // this.setState({ questions: questionsWithResults });
     const newIndex = this.state.question.id + 1;
     if (this.state.selectedAnswer === this.state.correctAnswer && newIndex < this.state.questions.length) {
       this.setState({ 

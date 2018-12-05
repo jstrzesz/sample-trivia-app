@@ -39,6 +39,7 @@ export default class Home extends Component {
       question.question = question.question.replace(/&epsilon;/g, 'Ɛ');
       question.question = question.question.replace(/&Phi;/g, 'ϕ');
       question.question = question.question.replace(/&ocirc;/g, 'ô');
+      question.question = question.question.replace(/&Aring;/g,'Å');
       question.correct_answer = question.correct_answer.replace(/&quot;/g, '"');
       question.correct_answer = question.correct_answer.replace(/`/g, '"');
       question.correct_answer = question.correct_answer.replace(/&#039;/g, '\'');
@@ -47,6 +48,7 @@ export default class Home extends Component {
       question.correct_answer = question.correct_answer.replace(/&epsilon;/g, 'Ɛ');
       question.correct_answer = question.correct_answer.replace(/&Phi;/g, 'ϕ');
       question.correct_answer = question.correct_answer.replace(/&ocirc;/g, 'ô');
+      question.correct_answer = question.correct_answer.replace(/&Aring;/g, 'Å');
       newArr.push(question);
     })
     return newArr;
@@ -59,11 +61,15 @@ export default class Home extends Component {
   render() {
     return (
       <div className="container">
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
         <div className="row">
           <div className="col-md-12">
             <div className="page-header text-center">
               <h3>Welcome to Trivia Insanity!</h3>
-              <h4>A Trivia Game</h4>
             </div>
             <br />
             <div className="card bg-default text-center">
