@@ -86,9 +86,20 @@ export default class Home extends Component {
               </div>
             </div>
             <br />
-            <button type="button" className="btn btn-md btn-info active btn-block" onClick={this.redirectToGamePage}>Begin</button>
+            <button type="button" className="btn btn-block" onClick={this.redirectToGamePage}>Begin</button>
           </div>
         </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
       </div>
     )
   }

@@ -5,7 +5,7 @@ const QuestionCard = ({ gameQuestion , falseAnswer, trueAnswer }) => {
   const { id, question, category } = gameQuestion;
   return (
     <div>
-      <div className="page-header">
+      <div className="page-header text-center">
         <h3>Question {id + 1}</h3>
       </div >
       <br />

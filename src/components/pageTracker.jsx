@@ -1,10 +1,10 @@
 import React from 'react';
+import './pageTracker.css';
 
 const PageTracker = ({ prevQuestion, nextQuestion }) => {
 
   return (
-    <div className="col-md-12 text-center">
-    {/* <nav> */}
+    <div className="col-md-12">
       <ul className="pagination">
         <li className="page-item">
           <button  className="page-link" 
@@ -19,7 +19,6 @@ const PageTracker = ({ prevQuestion, nextQuestion }) => {
               >Next</button>
         </li>
       </ul>
-    {/* </nav>  */}
     </div>
   )
 }
