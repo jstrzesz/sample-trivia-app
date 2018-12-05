@@ -84,12 +84,13 @@ export default class GamePage extends Component {
   }
 
   setAnswerFalse() {
-    this.setState({ selectedAnswer: 'False' })
-    if (this.state.selectedAnswer === this.state.correctAnswer) {
-      this.setState({ result: 'Correct' })
-    } else {
-      this.setState({ result: 'Incorrect' })
-    }
+    this.setState({ selectedAnswer: 'False' }, () => {
+      if (this.state.selectedAnswer === this.state.correctAnswer) {
+        this.setState({ result: 'Correct' })
+      } else {
+        this.setState({ result: 'Incorrect' })
+      }
+    })
   }
 
   updateScore() {
