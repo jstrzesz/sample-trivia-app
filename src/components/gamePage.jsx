@@ -65,6 +65,12 @@ export default class GamePage extends Component {
   }
 
   redirectToSummary() {
+    this.state.savedUserAnswers.push({
+      userSelectedAnswer: this.state.selectedAnswer,
+      correctAnswer: this.state.correctAnswer,
+      questionId: this.state.question.id,
+      result: this.state.result
+    })
     this.props.history.push('/gameOver', {
       score: this.state.score,
       savedAnswers: this.state.savedUserAnswers,
@@ -114,7 +120,10 @@ export default class GamePage extends Component {
           </div>
         </div>
         <div className="row">
-            <PageTracker prevQuestion={this.goToPreviousQuestion} nextQuestion={this.goToNextQuestion} index={this.state.question.id}/>
+            <PageTracker  prevQuestion={this.goToPreviousQuestion} 
+                          nextQuestion={this.goToNextQuestion} 
+                          index={this.state.question.id}
+                          endGame={this.redirectToSummary}/>
         </div>
         <br />
         <br />

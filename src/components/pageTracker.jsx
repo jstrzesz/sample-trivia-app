@@ -1,7 +1,7 @@
 import React from 'react';
 import './pageTracker.css';
 
-const PageTracker = ({ prevQuestion, nextQuestion, index }) => {
+const PageTracker = ({ prevQuestion, nextQuestion, endGame, index }) => {
 
   return (
     <div className="col-md-12">
@@ -9,14 +9,17 @@ const PageTracker = ({ prevQuestion, nextQuestion, index }) => {
         <li className="page-item">
           <button className="page-link" 
                   id="prevButton"
-                  href="#"
                   disabled={index === 0}
                   onClick={prevQuestion}>Previous</button>
         </li>
         <li className="page-item">
           <button className="page-link"
-                  href="#" 
+                  disabled={index === 9}
                   onClick={nextQuestion}>Next</button>
+        </li>
+        <li className="page-item">
+          <button className="page-link"
+                  onClick={endGame}>End Game</button>
         </li>
       </ul>
     </div>
