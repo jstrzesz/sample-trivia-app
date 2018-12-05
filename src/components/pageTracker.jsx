@@ -2,7 +2,7 @@ import React from 'react';
 import './pageTracker.css';
 
 const PageTracker = ({ prevQuestion, nextQuestion, endGame, index }) => {
-
+  //deconstruct parameters
   return (
     <div className="col-md-12">
       <ul className="pagination">

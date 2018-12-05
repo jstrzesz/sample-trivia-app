@@ -2,6 +2,7 @@ import React from 'react';
 import './questionCard.css';
 
 const QuestionCard = ({ gameQuestion , falseAnswer, trueAnswer }) => {
+  //deconstruct parameters
   const { id, question, category } = gameQuestion;
   return (
     <div>

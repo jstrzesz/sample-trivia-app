@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './home.css';
 
+//Home page
 export default class Home extends Component {
   
   constructor(props) {
@@ -13,16 +14,18 @@ export default class Home extends Component {
     this.redirectToGamePage = this.redirectToGamePage.bind(this);
   }
 
+  //makes api call to trivia api upon the loading of the home page
   componentDidMount() {
     axios.get('/trivia')
       .then(result => {
-        console.log(result, 'line 19')
+        //set state with results of api call
         this.setState({ questions: result.data })
+        //call fixQuestions function to edit questions
         this.fixQuestions(this.state.questions)
-        console.log(this.state.questions)
       })
   }
 
+  //function to fix trivia questions and replace characters not already in data
   fixQuestions(array) {
     const newArr = [];
     array.forEach((question, index) => {
@@ -54,6 +57,7 @@ export default class Home extends Component {
     return newArr;
   }
 
+  //function to redirect user to Game Page with questions passed along
   redirectToGamePage() {
     this.props.history.push('/gamePage', { questions: this.state.questions });
   }
