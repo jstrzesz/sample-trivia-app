@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+//import styling for Home Component
 import './home.css';
 
-//Home page
+//Home page of application
 export default class Home extends Component {
   
   constructor(props) {

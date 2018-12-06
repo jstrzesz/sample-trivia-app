@@ -1,6 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 3001;
+
+//import databseHelpers file to access function to make api call to trivia db
 const db = require('../database/databaseHelpers.js');
 
 const app = express();
