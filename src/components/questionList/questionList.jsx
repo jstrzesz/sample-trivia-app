@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './questionList.css';
 
 export default class QuestionList extends Component {
-
+  //renders list of questions with correct and incorrect responses
   render() {
     let resultStyle = { background: 'lightgreen' };
       if (this.props.result === 'Incorrect') {

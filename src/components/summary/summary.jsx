@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+//import questionList file to display questions and user answers
 import QuestionList from '../questionList/questionList.jsx';
 import './summary.css';
 
+//summary page
 export default class Summary extends Component {
   constructor(props) {
     super(props);

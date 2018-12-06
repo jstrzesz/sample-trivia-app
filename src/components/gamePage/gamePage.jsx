@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+//import questionCard file to display game question and options on game Page
 import QuestionCard from '../questionCard/questionCard.jsx';
+//import pageTracker file to handle routing through questions
 import PageTracker from '../pageTracker/pageTracker.jsx';
 
 //base component for Game Page
@@ -82,12 +84,12 @@ export default class GamePage extends Component {
       questionId: this.state.question.id,
       result: this.state.result
     })
-    //add score, savedUserAnswers, and questions to props
     this.props.history.push('/gameOver', {
       score: this.state.score,
       savedAnswers: this.state.savedUserAnswers,
       questions: this.state.questions
     });
+    //add score, savedUserAnswers, and questions to props
   }
 
   //function to set selected answer to true and result

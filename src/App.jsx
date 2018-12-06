@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
+//import necessary components for routing
 import Home from './components/home/Home.jsx';
 import GamePage from'./components/gamePage/gamePage.jsx';
 import Summary from './components/summary/summary.jsx';
